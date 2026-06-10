@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Anurag",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -38.4, "left": 33.64, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 188.8,
+      "left": 178.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": -37.4,
+      "left": -154.9,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot2",
+      "top": 58.6,
+      "left": -202.9,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": 182.4,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": 44.4, "left": 215, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "pot2:VCC", "esp:3V3", "red", [ "h76.8", "v-8.8" ] ],
+    [ "esp:GND.1", "pot2:GND", "black", [ "h-105.45", "v-9.6" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "h96", "v105.6", "h9.6" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h57.6", "v-153.6" ] ],
+    [ "lcd1:VCC", "esp:3V3", "red", [ "h57.6", "v-278.5", "h393.6" ] ],
+    [ "pot1:SIG", "esp:34", "green", [ "h115.2", "v19.6" ] ],
+    [ "pot2:SIG", "esp:35", "green", [ "h115.2", "v-57.2" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h192", "v-211.4" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h201.6", "v-230.7" ] ],
+    [ "r1:1", "esp:2", "green", [ "v0" ] ],
+    [ "led2:C", "esp:GND.3", "green", [ "v19.2", "h-47.6", "v-57.6" ] ],
+    [ "led2:A", "r1:2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
